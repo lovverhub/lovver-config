@@ -1,13 +1,9 @@
-export default {
-  $schema: 'https://json.schemastore.org/eslintrc',
-  extends: [
-    'eslint:recommended',
-    'plugin:unicorn/recommended',
-    'plugin:tailwindcss/recommended',
-    require.resolve('@umijs/lint/dist/config/eslint'),
-  ],
-  parser: '@typescript-eslint/parser',
-  plugins: [
+import type { Linter } from 'eslint'
+
+type Options = Pick<Linter.BaseConfig, 'rules' | 'plugins'>
+
+export const eslintConfig = (options?: Options) => {
+  const plugins = [
     'unicorn',
     'import',
     'unused-imports',
@@ -15,8 +11,10 @@ export default {
     'sort-keys-fix',
     'typescript-sort-keys',
     'tailwindcss',
-  ],
-  rules: {
+    ...(options?.plugins?.length ? options.plugins : []),
+  ]
+
+  const rules: Linter.RulesRecord = {
     '@typescript-eslint/await-thenable': 'off',
     '@typescript-eslint/ban-ts-comment': [
       'error',
@@ -110,5 +108,19 @@ export default {
         varsIgnorePattern: '^_',
       },
     ],
-  },
+    ...options?.rules,
+  }
+
+  return {
+    $schema: 'https://json.schemastore.org/eslintrc',
+    extends: [
+      'eslint:recommended',
+      'plugin:unicorn/recommended',
+      'plugin:tailwindcss/recommended',
+      require.resolve('@umijs/lint/dist/config/eslint'),
+    ],
+    parser: '@typescript-eslint/parser',
+    plugins: plugins.filter((p) => !!p),
+    rules: rules,
+  }
 }
