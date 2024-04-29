@@ -7,11 +7,6 @@ export default {
     require.resolve('@umijs/lint/dist/config/eslint'),
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2022,
-    project: './tsconfig.eslint.json',
-    sourceType: 'module',
-  },
   plugins: [
     'unicorn',
     'import',
@@ -40,14 +35,6 @@ export default {
     '@typescript-eslint/comma-spacing': ['error', { after: true, before: false }],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/default-param-last': 'error',
-    '@typescript-eslint/dot-notation': [
-      'error',
-      {
-        allowKeywords: true,
-        allowPattern: '(^[A-Z])|(^[a-z]+(_[a-z]+)+$)',
-        allowPrivateClassPropertyAccess: true,
-      },
-    ],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
