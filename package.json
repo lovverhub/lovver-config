@@ -60,6 +60,7 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@semantic-release/commit-analyzer": "^12.0.0",
     "@types/bun": "latest",
+    "@types/eslint": "^8.56.10",
     "commitlint": "^19",
     "eslint": "^8",
     "husky": "^9.0.11",
