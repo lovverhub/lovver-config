@@ -16,13 +16,10 @@ jobs:
       - name: Install bun
         uses: oven-sh/setup-bun@v1
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
-
-      - name: Setup npm 7
-        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+          node-version: 20
 
       - name: Install deps
         run: bun i
