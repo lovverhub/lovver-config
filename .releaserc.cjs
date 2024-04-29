@@ -1,1 +1,1 @@
-module.exports = require('./dist/index.cjs').semanticRelease
+module.exports = require('./dist/index.cjs').releaseConfig()
